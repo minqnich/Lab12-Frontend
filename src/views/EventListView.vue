@@ -8,7 +8,14 @@ import { Ref } from 'vue'
 import EventService from '@/services/EventService'
 const events: Ref<Array<EventItem>> = ref([])
 
-EventService.getEvent().then((response)=> {
+const props = defineProps({
+  page: {
+    type: Number,
+    required: true
+  }
+})
+
+EventService.getEvent(2, props.page).then((response: AxiosResponse<EventItem[]>) => {
   events.value = response.data
 })
 
