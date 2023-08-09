@@ -1,14 +1,21 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import { storeToRefs } from 'pinia';
+import { useMessageStore } from './stores/message';
+const store = useMessageStore()
+const { message } = storeToRefs(store)
 </script>
 
 <template>
-  <header>
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/organizer">organizer</RouterLink>
-        <RouterLink to="/student">student</RouterLink>
+  <header class="max-h-screen leading-normal text-center	">
+    <div id="flashMessage" v-if="message">
+      <h4 class="font-xl">{{  message  }}</h4>
+    </div>
+    <nav class="p-8 font-bold text-[#2c3e50]">
+        <RouterLink :to="{name:'EventList'}" class="text-back active:text-green-700 focus:text-green-600">Home</RouterLink> |
+        <RouterLink :to="{name:'about'}" class="text-back active:text-green-700 focus:text-green-600">About</RouterLink> |
+        <RouterLink :to="{name:'organizer' }" class="text-back active:text-green-700 focus:text-green-600">Organizer</RouterLink> |
+        <RouterLink :to="{name:'Student'}" class="text-back active:text-green-700 focus:text-green-600">Student</RouterLink>
 
       </nav>
   </header>
@@ -25,31 +32,36 @@ import { RouterLink, RouterView } from 'vue-router'
   color: #2c3e50;
 }
 
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
+/* nav {
   padding: 30px;
-}
+} */
 
-nav a.router-link-exact-active {
+/* nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
 
 
-nav a {
+/* nav a {
   font-weight: bold;
   color: #2c3e50;
+} */
+
+/* h4{
+  font-size: 20px;
+} */
+
+@keyframes yellowfade{
+  from{
+    background: yellow;
+  }
+  to{
+    background: transparent;
+
+  }
 }
 
-h4{
-  font-size: 20px;
+#flashMessage{
+  animation: yellowfade 3s ease-in-out;
 }
 </style>

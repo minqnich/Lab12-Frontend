@@ -42,17 +42,21 @@ const events = ref<EventItem[]>([
 </script>
 
 <template>
-  <h1>Events for Good</h1>
-  <main class="events">
-    <OrganizerCard v-for="event in events" :key="event.id" :event="event"></OrganizerCard>
-
+  <h1 class="text-center text-3xl font-bold mb-4">Events for Good</h1>
+  <main class="flex flex-col items-center">
+    <OrganizerCard
+      v-for="event in events"
+      :key="event.id"
+      :event="event"
+      class="mb-4"
+    ></OrganizerCard>
   </main>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 .events{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-</style>
+</style> -->
