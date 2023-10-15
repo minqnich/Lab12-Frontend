@@ -14,6 +14,10 @@ import EventService from '@/services/EventService'
 import { useEventStore } from '@/stores/event'
 import AddEventView from '@/views/EventFormView.vue'
 import AddOrganizerView from '@/views/OrganizerFormView.vue'
+import LoginView from '@/views/LoginView.vue'
+import RegisterView from '../views/RegisterView.vue'
+
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -49,6 +53,16 @@ const router = createRouter({
       path: '/student',
       name: 'Student',
       component: StudentView 
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginView
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: RegisterView
     },
     {
       path: '/event/:id',

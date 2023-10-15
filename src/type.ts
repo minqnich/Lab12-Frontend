@@ -9,3 +9,10 @@ export interface EventItem{
     organizer: string
     petsAllowed: boolean
 }
+
+export interface EventOrganizer{
+    id: number
+    name: string
+    roles: string[]
+    images: string[]
+  }
