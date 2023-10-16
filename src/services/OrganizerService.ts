@@ -19,7 +19,7 @@ export default{
         return apiClient.get<OrganizerItem>('events/' + id.toString())
 
     },
-    saveOrganizer(organizer: OrganizerItem) : Promise<AxiosInstance<OrganizerItem>> {
+    saveOrganizer(organizer: OrganizerItem) : Promise<AxiosResponse<OrganizerItem>> {
             return apiClient.post<OrganizerItem>('/organizer',organizer)
     }
 }
